@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des Catways</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="catways.js"></script>
+  <!--
+    @file catways.html
+    @description Affiche la liste complète des catways disponibles dans le port
+    @version 1.0
+    @see catways.js pour la récupération des données via l'API
+    @see catway.html pour les détails d'un catway spécifique
+  -->
+</head>
+<body>
+  <h1>Liste des Catways</h1>
+
+  <!--
+    @section table-catways
+    @description Tableau affichant tous les catways
+    @columns ID, Numéro, Type, Etat
+  -->
+  <table id="table-catways">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Numéro</th>
+        <th>Type</th>
+        <th>Etat</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!--
+    @link dashboard
+    @description Lien retour vers le tableau de bord
+  -->
+  <a href="dashboard.html">⬅ Retour au dashboard</a>
+</body>
+</html>

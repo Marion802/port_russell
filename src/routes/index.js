@@ -1,5 +1,6 @@
 const router = require('express').Router();
 
-router.get('/health', (req, res) => res.json({ ok: true }));
+// routes
+router.use('/catways', require('./catways'));
 
 module.exports = router;

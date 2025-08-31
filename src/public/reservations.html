@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des Réservations</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="reservations.js"></script>
+  <!--
+    @file reservations.html
+    @description Affiche la liste complète des réservations
+    @version 1.0
+    @see reservations.js pour la récupération des données via l'API
+    @see reservation.html pour les détails d'une réservation spécifique
+  -->
+</head>
+<body>
+  <h1>Liste des Réservations</h1>
+
+  <!--
+    @section table-reservations
+    @description Tableau affichant toutes les réservations
+    @columns ID, Catway, Client, Bateau, Check-in, Check-out
+  -->
+  <table id="table-reservations">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Catway</th>
+        <th>Client</th>
+        <th>Bateau</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!--
+    @link dashboard
+    @description Lien retour vers le tableau de bord
+  -->
+  <a href="dashboard.html">⬅ Retour au dashboard</a>
+</body>
+</html>

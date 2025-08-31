@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tableau de Bord - Port de Plaisance Russell</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="dashboard.js"></script>
+  <!--
+    @file dashboard.html
+    @description Page du tableau de bord pour l'utilisateur connecté
+    @author
+    @version 1.0
+    @see dashboard.js pour la logique JS associée
+  -->
+</head>
+<body>
+  <h1>Tableau de Bord</h1>
+  <p>Utilisateur connecté</p>
+
+  <!--
+    @section users-section
+    @description Gestion des utilisateurs : création, modification, suppression
+  -->
+  <section id="users-section">
+    <h2>Gestion des Utilisateurs</h2>
+
+    <!-- Formulaire de création d'utilisateur -->
+    <h3>Créer un utilisateur</h3>
+    <form id="create-user-form">
+      <input type="text" id="user-name" placeholder="Nom" required>
+      <input type="email" id="user-email" placeholder="Email" required>
+      <input type="password" id="user-password" placeholder="Mot de passe" required>
+      <button type="submit">Créer</button>
+    </form>
+
+    <!-- Formulaire de modification d'utilisateur -->
+    <h3>Modifier un utilisateur (par ID)</h3>
+    <form id="update-user-form">
+      <input type="text" id="update-user-id" placeholder="ID utilisateur" required>
+      <input type="text" id="update-user-name" placeholder="Nouveau nom">
+      <input type="email" id="update-user-email" placeholder="Nouvel email">
+      <input type="password" id="update-user-password" placeholder="Nouveau mot de passe">
+      <button type="submit">Modifier</button>
+    </form>
+
+    <!-- Formulaire de suppression d'utilisateur -->
+    <h3>Supprimer un utilisateur (par ID)</h3>
+    <form id="delete-user-form">
+      <input type="text" id="delete-user-id" placeholder="ID utilisateur" required>
+      <button type="submit">Supprimer</button>
+    </form>
+  </section>
+
+  <!--
+    @section catways-section
+    @description Gestion des catways : création, modification, suppression, détails
+  -->
+  <section id="catways-section">
+    <h2>Gestion des Catways</h2>
+
+    <h3>Créer un catway</h3>
+    <form id="create-catway-form">
+      <input type="number" id="catway-number" placeholder="Numéro" required>
+      <select id="catway-type" required>
+        <option value="">Type</option>
+        <option value="long">Long</option>
+        <option value="short">Short</option>
+      </select>
+      <input type="text" id="catway-state" placeholder="Etat" required>
+      <button type="submit">Créer</button>
+    </form>
+
+    <h3>Modifier l'état d'un catway (par ID)</h3>
+    <form id="update-catway-form">
+      <input type="text" id="update-catway-id" placeholder="ID catway" required>
+      <input type="text" id="update-catway-state" placeholder="Nouvel état" required>
+      <button type="submit">Modifier</button>
+    </form>
+
+    <h3>Supprimer un catway (par ID)</h3>
+    <form id="delete-catway-form">
+      <input type="text" id="delete-catway-id" placeholder="ID catway" required>
+      <button type="submit">Supprimer</button>
+    </form>
+
+    <h3>Afficher les détails d'un catway (par ID)</h3>
+    <form id="get-catway-form">
+      <input type="text" id="get-catway-id" placeholder="ID catway" required>
+      <button type="submit">Afficher</button>
+    </form>
+  </section>
+
+  <!--
+    @section reservations-section
+    @description Gestion des réservations : création, suppression, détails
+  -->
+  <section id="reservations-section">
+    <h2>Gestion des Réservations</h2>
+
+    <h3>Créer une réservation</h3>
+    <form id="create-reservation-form">
+      <input type="number" id="reservation-catway" placeholder="Numéro catway" required>
+      <input type="text" id="reservation-client" placeholder="Nom client" required>
+      <input type="text" id="reservation-boat" placeholder="Nom bateau" required>
+      <input type="date" id="reservation-checkin" placeholder="Check-in" required>
+      <input type="date" id="reservation-checkout" placeholder="Check-out" required>
+      <button type="submit">Créer</button>
+    </form>
+
+    <h3>Supprimer une réservation (par ID)</h3>
+    <form id="delete-reservation-form">
+      <input type="text" id="delete-reservation-id" placeholder="ID réservation" required>
+      <button type="submit">Supprimer</button>
+    </form>
+
+    <h3>Afficher les détails d'une réservation (par ID)</h3>
+    <form id="get-reservation-form">
+      <input type="text" id="get-reservation-id" placeholder="ID réservation" required>
+      <button type="submit">Afficher</button>
+    </form>
+  </section>
+
+  <!--
+    @section links-section
+    @description Liens rapides vers les pages de liste des catways et réservations
+  -->
+  <section id="links-section">
+    <h2>Liens rapides</h2>
+    <a href="catways.html">Voir la liste des catways</a><br>
+    <a href="reservations.html">Voir la liste des réservations</a>
+  </section>
+
+  <!-- Messages généraux -->
+  <p id="form-message" style="color:green;"></p>
+  <p id="form-error" style="color:red;"></p>
+</body>
+</html>

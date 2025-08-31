@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentation API - Port de Plaisance Russell</title>
+  <link rel="stylesheet" href="style.css">
+  <!--
+    @file docs.html
+    @description Documentation complète de l'API Port de Plaisance Russell
+    @version 1.0
+    @see dashboard.html pour le tableau de bord
+  -->
+</head>
+<body>
+  <h1>Documentation API - Port de Plaisance Russell</h1>
+
+  <!--
+    @section authentication
+    @description Routes pour l'authentification des utilisateurs
+  -->
+  <section>
+    <h2>Authentification</h2>
+    <h3>POST /api/auth/register</h3>
+    <p>Créer un utilisateur</p>
+    <pre>
+{
+  "name": "Nom",
+  "email": "email@exemple.com",
+  "password": "motdepasse"
+}
+    </pre>
+
+    <h3>POST /api/auth/login</h3>
+    <p>Connexion et récupération du token JWT</p>
+    <pre>
+{
+  "email": "email@exemple.com",
+  "password": "motdepasse"
+}
+    </pre>
+  </section>
+
+  <!--
+    @section catways
+    @description Routes pour la gestion des catways
+  -->
+  <section>
+    <h2>Catways</h2>
+    <h3>GET /api/catways</h3>
+    <p>Récupère tous les catways</p>
+
+    <h3>GET /api/catways/:id</h3>
+    <p>Détails d'un catway par ID</p>
+
+    <h3>POST /api/catways</h3>
+    <p>Créer un catway (JWT requis)</p>
+    <pre>
+{
+  "catwayNumber": 1,
+  "type": "long",
+  "catwayState": "Disponible"
+}
+    </pre>
+
+    <h3>PATCH /api/catways/:id</h3>
+    <p>Modifier l'état d'un catway (JWT requis)</p>
+    <pre>
+{
+  "catwayState": "Occupé"
+}
+    </pre>
+
+    <h3>DELETE /api/catways/:id</h3>
+    <p>Supprimer un catway (JWT requis)</p>
+  </section>
+
+  <!--
+    @section reservations
+    @description Routes pour la gestion des réservations
+  -->
+  <section>
+    <h2>Réservations</h2>
+    <h3>GET /api/catways/:id/reservations</h3>
+    <p>Liste des réservations pour un catway</p>
+
+    <h3>GET /api/catways/:id/reservations/:reservationId</h3>
+    <p>Détails d'une réservation</p>
+
+    <h3>POST /api/catways/:id/reservations</h3>
+    <p>Créer une réservation (JWT requis)</p>
+    <pre>
+{
+  "clientName": "Jean Dupont",
+  "boatName": "Le Marin",
+  "checkIn": "2025-09-01",
+  "checkOut": "2025-09-05"
+}
+    </pre>
+
+    <h3>DELETE /api/catways/:id/reservations/:reservationId</h3>
+    <p>Supprimer une réservation (JWT requis)</p>
+  </section>
+
+  <!--
+    @section notes
+    @description Notes et recommandations pour l'utilisation de l'API
+  -->
+  <section>
+    <h2>Notes</h2>
+    <ul>
+      <li>Toutes les routes nécessitant une authentification doivent avoir le header :</li>
+      <pre>Authorization: Bearer &lt;votre_token&gt;</pre>
+      <li>Les dates doivent être au format ISO (YYYY-MM-DD)</li>
+      <li>Pour modifier partiellement un objet, utilisez PATCH.</li>
+    </ul>
+  </section>
+</body>
+</html>

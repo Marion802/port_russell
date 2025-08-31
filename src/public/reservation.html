@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Détails de la Réservation</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="reservation.js"></script>
+  <!--
+    @file reservation.html
+    @description Affiche les détails d'une réservation spécifique
+    @version 1.0
+    @see reservation.js pour la récupération des données via l'API
+    @see reservations.html pour la liste complète des réservations
+  -->
+</head>
+<body>
+  <h1>Détails de la Réservation</h1>
+
+  <!--
+    @section reservation-details
+    @description Conteneur affichant les informations détaillées d'une réservation
+  -->
+  <div id="reservation-details">
+    <p><strong>ID :</strong> <span id="reservation-id"></span></p>
+    <p><strong>Catway :</strong> <span id="reservation-catway"></span></p>
+    <p><strong>Client :</strong> <span id="reservation-client"></span></p>
+    <p><strong>Bateau :</strong> <span id="reservation-boat"></span></p>
+    <p><strong>Check-in :</strong> <span id="reservation-checkin"></span></p>
+    <p><strong>Check-out :</strong> <span id="reservation-checkout"></span></p>
+  </div>
+
+  <!--
+    @link reservations
+    @description Lien retour vers la liste complète des réservations
+  -->
+  <a href="reservations.html">⬅ Retour à la liste des réservations</a>
+</body>
+</html>
