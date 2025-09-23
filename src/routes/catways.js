@@ -1,8 +1,13 @@
 const router = require('express').Router();
 const Catway = require('../models/Catway');
 const protect = require('../middleware/auth');
+const reservationRoutes = require('./reservations');
 
-// ➡️ GET /api/catways → liste de tous les catways
+/**
+ * @route GET /api/catways
+ * @description Récupère la liste de tous les catways
+ * @returns {Array<Catway>} catways - Tableau de catways
+ */
 router.get('/', async (req, res, next) => {
   try {
     const catways = await Catway.find();
@@ -12,7 +17,13 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-// ➡️ GET /api/catways/:id → détails d’un catway
+/**
+ * @route GET /api/catways/:id
+ * @description Récupère les détails d’un catway par ID
+ * @param {string} req.params.id - ID du catway
+ * @returns {Catway} catway
+ * @throws 404 - Si le catway n'est pas trouvé
+ */
 router.get('/:id', async (req, res, next) => {
   try {
     const catway = await Catway.findById(req.params.id);
@@ -23,7 +34,15 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-// ➡️ POST /api/catways → créer un catway
+/**
+ * @route POST /api/catways
+ * @description Crée un nouveau catway
+ * @param {Object} req.body - Données du catway
+ * @param {number} req.body.catwayNumber
+ * @param {string} req.body.type
+ * @param {string} [req.body.catwayState]
+ * @returns {Catway} catway créé
+ */
 router.post('/', async (req, res, next) => {
   try {
     const catway = await Catway.create(req.body);
@@ -33,7 +52,14 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// ➡️ PUT /api/catways/:id → remplacer complètement un catway
+/**
+ * @route PUT /api/catways/:id
+ * @description Remplace complètement un catway existant
+ * @param {string} req.params.id - ID du catway
+ * @param {Object} req.body - Données complètes du catway
+ * @returns {Catway} catway mis à jour
+ * @throws 404 - Si le catway n'est pas trouvé
+ */
 router.put('/:id', async (req, res, next) => {
   try {
     const catway = await Catway.findByIdAndUpdate(req.params.id, req.body, {
@@ -48,7 +74,14 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
-// ➡️ PATCH /api/catways/:id → mettre à jour partiellement
+/**
+ * @route PATCH /api/catways/:id
+ * @description Met à jour partiellement un catway existant
+ * @param {string} req.params.id - ID du catway
+ * @param {Object} req.body - Données à mettre à jour
+ * @returns {Catway} catway mis à jour
+ * @throws 404 - Si le catway n'est pas trouvé
+ */
 router.patch('/:id', async (req, res, next) => {
   try {
     const catway = await Catway.findByIdAndUpdate(req.params.id, req.body, {
@@ -62,7 +95,13 @@ router.patch('/:id', async (req, res, next) => {
   }
 });
 
-// ➡️ DELETE /api/catways/:id → supprimer un catway
+/**
+ * @route DELETE /api/catways/:id
+ * @description Supprime un catway existant
+ * @param {string} req.params.id - ID du catway
+ * @returns {Object} message de confirmation
+ * @throws 404 - Si le catway n'est pas trouvé
+ */
 router.delete('/:id', async (req, res, next) => {
   try {
     const catway = await Catway.findByIdAndDelete(req.params.id);
@@ -73,9 +112,10 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-const reservationRoutes = require('./reservations');
+// Routes imbriquées pour les réservations d'un catway
 router.use('/:id/reservations', reservationRoutes);
 
+// Middleware de protection des routes (authentification)
+router.use(protect);
 
 module.exports = router;
-router.use(protect);

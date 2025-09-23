@@ -1,0 +1,12 @@
+[
+  { "catwayNumber": 1, "type": "long", "catwayState": "Disponible" },
+  { "catwayNumber": 2, "type": "short", "catwayState": "Occupé" },
+  { "catwayNumber": 3, "type": "long", "catwayState": "Disponible" },
+  { "catwayNumber": 4, "type": "short", "catwayState": "Disponible" },
+  { "catwayNumber": 5, "type": "long", "catwayState": "Occupé" },
+  { "catwayNumber": 6, "type": "short", "catwayState": "Disponible" },
+  { "catwayNumber": 7, "type": "long", "catwayState": "Disponible" },
+  { "catwayNumber": 8, "type": "short", "catwayState": "Occupé" },
+  { "catwayNumber": 9, "type": "long", "catwayState": "Disponible" },
+  { "catwayNumber": 10, "type": "short", "catwayState": "Disponible" }
+]

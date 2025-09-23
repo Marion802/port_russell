@@ -1,0 +1,72 @@
+[
+  {
+    "catwayNumber": 2,
+    "clientName": "Jean Dupont",
+    "boatName": "Le Marin",
+    "checkIn": "2025-09-01T00:00:00.000Z",
+    "checkOut": "2025-09-05T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 5,
+    "clientName": "Marie Curie",
+    "boatName": "L'Étoile",
+    "checkIn": "2025-09-10T00:00:00.000Z",
+    "checkOut": "2025-09-12T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 8,
+    "clientName": "Albert Einstein",
+    "boatName": "La Relativité",
+    "checkIn": "2025-09-03T00:00:00.000Z",
+    "checkOut": "2025-09-07T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 5,
+    "clientName": "Isaac Newton",
+    "boatName": "Principia",
+    "checkIn": "2025-09-15T00:00:00.000Z",
+    "checkOut": "2025-09-18T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 2,
+    "clientName": "Galileo Galilei",
+    "boatName": "Telescope",
+    "checkIn": "2025-09-20T00:00:00.000Z",
+    "checkOut": "2025-09-22T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 8,
+    "clientName": "Nikola Tesla",
+    "boatName": "AC Dynamo",
+    "checkIn": "2025-09-12T00:00:00.000Z",
+    "checkOut": "2025-09-15T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 5,
+    "clientName": "Leonardo da Vinci",
+    "boatName": "Mona Lisa",
+    "checkIn": "2025-09-25T00:00:00.000Z",
+    "checkOut": "2025-09-28T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 8,
+    "clientName": "James Watt",
+    "boatName": "Steam Engine",
+    "checkIn": "2025-09-18T00:00:00.000Z",
+    "checkOut": "2025-09-20T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 2,
+    "clientName": "Charles Darwin",
+    "boatName": "Beagle",
+    "checkIn": "2025-09-28T00:00:00.000Z",
+    "checkOut": "2025-10-02T00:00:00.000Z"
+  },
+  {
+    "catwayNumber": 5,
+    "clientName": "Marie Curie II",
+    "boatName": "Radium",
+    "checkIn": "2025-10-03T00:00:00.000Z",
+    "checkOut": "2025-10-07T00:00:00.000Z"
+  }
+]

@@ -1,9 +1,20 @@
+/**
+ * @file catway.js
+ * @description Script pour afficher les détails d'un catway spécifique sur la page catway.html.
+ */
+
 const token = localStorage.getItem('token');
 
-// Récupérer l'id depuis l'URL, ex : catway.html?id=123456
+// Récupération de l'ID du catway depuis l'URL, ex : catway.html?id=123456
 const params = new URLSearchParams(window.location.search);
 const catwayId = params.get('id');
 
+/**
+ * Charge les informations d'un catway depuis l'API et les affiche sur la page.
+ * @async
+ * @function loadCatway
+ * @returns {Promise<void>} Affiche les détails du catway ou une alerte en cas d'erreur.
+ */
 async function loadCatway() {
   try {
     const res = await fetch(`/api/catways/${catwayId}`, {
@@ -25,4 +36,5 @@ async function loadCatway() {
   }
 }
 
+// Exécution de la fonction pour afficher le catway
 loadCatway();

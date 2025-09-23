@@ -1,5 +1,16 @@
+/**
+ * @file catways.js
+ * @description Script pour afficher la liste des catways sur la page catways.html.
+ */
+
 const token = localStorage.getItem('token'); // token JWT
 
+/**
+ * Charge tous les catways depuis l'API et les affiche dans le tableau HTML.
+ * @async
+ * @function loadCatways
+ * @returns {Promise<void>} Remplit le tableau avec les données des catways.
+ */
 async function loadCatways() {
   try {
     const res = await fetch('/api/catways', {
@@ -25,4 +36,6 @@ async function loadCatways() {
   }
 }
 
+// Exécution de la fonction pour afficher la liste des catways
 loadCatways();
+

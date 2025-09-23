@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const request = require('supertest');
-const app = require('../src/app');
+const app = require('../app');
 const chai = require('chai');
 const expect = chai.expect;
 

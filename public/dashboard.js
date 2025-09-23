@@ -1,6 +1,16 @@
+/**
+ * @file dashboard.js
+ * @description Script pour gérer le tableau de bord : utilisateurs, catways et réservations.
+ */
+
 const token = localStorage.getItem('token');
 
-// ----------------- Helper -----------------
+/**
+ * Affiche un message temporaire dans la page.
+ * @param {string} id - L'ID de l'élément HTML où afficher le message.
+ * @param {string} text - Le texte du message.
+ * @param {boolean} [isError=false] - Définit si le message est une erreur (rouge) ou succès (vert).
+ */
 function showMessage(id, text, isError = false) {
   const el = document.getElementById(id);
   el.textContent = text;
@@ -8,13 +18,16 @@ function showMessage(id, text, isError = false) {
   setTimeout(() => el.textContent = '', 4000);
 }
 
-// ----------------- Listes -----------------
+/**
+ * Charge tous les catways et les affiche dans le tableau HTML.
+ * @async
+ */
 async function loadCatways() {
   try {
     const res = await fetch('/api/catways', { headers: { 'Authorization': `Bearer ${token}` }});
     const data = await res.json();
     const tbody = document.querySelector('#table-catways tbody');
-    if(!tbody) return;
+    if (!tbody) return;
     tbody.innerHTML = '';
     data.forEach(c => {
       const tr = document.createElement('tr');
@@ -27,12 +40,16 @@ async function loadCatways() {
 }
 loadCatways();
 
+/**
+ * Charge toutes les réservations et les affiche dans le tableau HTML.
+ * @async
+ */
 async function loadReservations() {
   try {
     const res = await fetch('/api/reservations', { headers: { 'Authorization': `Bearer ${token}` }});
     const data = await res.json();
     const tbody = document.querySelector('#table-reservations tbody');
-    if(!tbody) return;
+    if (!tbody) return;
     tbody.innerHTML = '';
     data.forEach(r => {
       const tr = document.createElement('tr');
@@ -45,7 +62,13 @@ async function loadReservations() {
 }
 loadReservations();
 
-// ----------------- Fonction générique pour formulaires -----------------
+/**
+ * Soumet un formulaire et effectue l'appel API correspondant.
+ * @param {string} formId - L'ID du formulaire HTML.
+ * @param {string} method - La méthode HTTP à utiliser (GET, POST, PUT, PATCH, DELETE).
+ * @param {string|function} urlBuilder - L'URL ou une fonction qui retourne l'URL en fonction des champs du formulaire.
+ * @param {string[]} fields - Les IDs des champs à inclure dans le body.
+ */
 async function submitForm(formId, method, urlBuilder, fields) {
   const form = document.getElementById(formId);
   if(!form) return;

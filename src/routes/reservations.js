@@ -3,17 +3,32 @@ const Reservation = require('../models/Reservation');
 const Catway = require('../models/Catway');
 const protect = require('../middleware/auth');
 
-// ➡️ GET /api/catways/:id/reservations → toutes les réservations pour un catway
+/**
+ * @route GET /api/catways/:id/reservations
+ * @description Récupère toutes les réservations pour un catway spécifique.
+ *              Si aucun ID n'est fourni, récupère toutes les réservations.
+ * @returns {Array<Reservation>} Liste des réservations
+ */
 router.get('/', async (req, res, next) => {
   try {
-    const reservations = await Reservation.find({ catwayNumber: req.params.id });
-    res.json(reservations);
+    if (req.params.id) {
+      const reservations = await Reservation.find({ catwayNumber: req.params.id });
+      return res.json(reservations);
+    } else {
+      const reservations = await Reservation.find();
+      return res.json(reservations);
+    }
   } catch (err) {
     next(err);
   }
 });
 
-// ➡️ GET /api/catways/:id/reservations/:reservationId → détails d'une réservation
+/**
+ * @route GET /api/catways/:id/reservations/:reservationId
+ * @description Récupère les détails d'une réservation par ID.
+ * @param {string} reservationId - ID de la réservation
+ * @returns {Reservation|404} Détails de la réservation ou erreur si non trouvé
+ */
 router.get('/:reservationId', async (req, res, next) => {
   try {
     const reservation = await Reservation.findById(req.params.reservationId);
@@ -24,7 +39,17 @@ router.get('/:reservationId', async (req, res, next) => {
   }
 });
 
-// ➡️ POST /api/catways/:id/reservations → créer une réservation
+/**
+ * @route POST /api/catways/:id/reservations
+ * @description Crée une nouvelle réservation pour un catway spécifique.
+ * @middleware protect - nécessite authentification
+ * @body {number} catwayNumber - Numéro du catway
+ * @body {string} clientName - Nom du client
+ * @body {string} boatName - Nom du bateau
+ * @body {Date} checkIn - Date d'arrivée
+ * @body {Date} checkOut - Date de départ
+ * @returns {Reservation} La réservation créée
+ */
 router.post('/', protect, async (req, res, next) => {
   try {
     const catway = await Catway.findOne({ catwayNumber: req.params.id });
@@ -32,11 +57,10 @@ router.post('/', protect, async (req, res, next) => {
 
     const { checkIn, checkOut } = req.body;
 
-    // 🔍 Vérifier si une réservation existe déjà pour ces dates
     const overlap = await Reservation.findOne({
       catwayNumber: catway.catwayNumber,
       $or: [
-        { checkIn: { $lt: checkOut }, checkOut: { $gt: checkIn } } // chevauchement
+        { checkIn: { $lt: checkOut }, checkOut: { $gt: checkIn } }
       ]
     });
 
@@ -44,7 +68,6 @@ router.post('/', protect, async (req, res, next) => {
       return res.status(400).json({ error: 'Ce catway est déjà réservé sur cette période' });
     }
 
-    // ✅ Créer la réservation si pas de conflit
     const reservation = await Reservation.create({
       catwayNumber: catway.catwayNumber,
       ...req.body
@@ -56,8 +79,13 @@ router.post('/', protect, async (req, res, next) => {
   }
 });
 
-
-// ➡️ DELETE /api/catways/:id/reservations/:reservationId → supprimer une réservation
+/**
+ * @route DELETE /api/catways/:id/reservations/:reservationId
+ * @description Supprime une réservation par ID.
+ * @middleware protect - nécessite authentification
+ * @param {string} reservationId - ID de la réservation
+ * @returns {object} Message de confirmation ou erreur
+ */
 router.delete('/:reservationId', protect, async (req, res, next) => {
   try {
     const reservation = await Reservation.findByIdAndDelete(req.params.reservationId);

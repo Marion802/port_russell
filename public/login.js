@@ -1,6 +1,16 @@
+/**
+ * @file login.js
+ * @description Gestion de la connexion de l'utilisateur pour accéder au dashboard.
+ */
+
 const loginForm = document.getElementById('login-form');
 const loginError = document.getElementById('login-error');
 
+/**
+ * Événement de soumission du formulaire de connexion.
+ * Récupère l'email et le mot de passe, effectue la requête POST sur /api/auth/login,
+ * et stocke le token JWT dans le localStorage si la connexion réussit.
+ */
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -17,7 +27,10 @@ loginForm.addEventListener('submit', async (e) => {
     const data = await res.json();
 
     if (res.ok) {
-      // Stocker le token JWT et rediriger vers le dashboard
+      /**
+       * Stockage du token JWT pour authentification sur les autres requêtes.
+       * Redirection vers le dashboard.
+       */
       localStorage.setItem('token', data.token);
       window.location.href = 'dashboard.html';
     } else {

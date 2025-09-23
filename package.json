@@ -6,7 +6,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js",
     "test": "mocha tests --timeout 5000",
-     "docs": "jsdoc -c jsdoc.json"
+    "docs": "jsdoc -c jsdoc.json"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mongo": "^0.1.0",
     "mongodb": "^6.19.0",
     "mongoose": "^8.18.0"
   },
